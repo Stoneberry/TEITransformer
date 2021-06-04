@@ -1,0 +1,35 @@
+
+PATHS:
+  schema_dir: "data/schema/scenarios"
+
+PATTERNS:
+  CSS:
+    - (?P<value>(?:\d|\.)+)(?P<measure>[a-z]+)
+    - rgb\((?P<r>.+?), (?P<g>.+?), (?P<b>.+?)\)
+
+FORMATS:
+  file: ['.txt', '.xml']
+  schema: ['.rng', '.dtd', '.xsd']
+  odd: ['.odd', '.xml']
+  default_schema: "rng"
+  output: ['docx', 'html', 'json']
+  css: ['css']
+  html_output: ['html']
+
+SCHEMA:
+  loc_pattern: "//*/@{}:schemaLocation"
+  xs_import: "{http://www.w3.org/2001/XMLSchema}import"
+  xs_tei: "http://www.tei-c.org/ns/1.0"
+  root: >
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    </xs:schema>
+
+XPATH:
+  odd_omit: "//*[name() = 'elementSpec']/*[name() = 'model'][@behaviour='omit']"
+  heading: "//*[name() = 'elementSpec']/*[name() = 'model'][@behaviour='heading']"
+  predicates: [
+      "child::", "descendant::", "descendant-or-self::",
+      "ancestor::", 'ancestor-or-self::', "parent::",
+      "self::", "following::", "following-sibling::",
+      "preceding::", "preceding-sibling::"
+  ]

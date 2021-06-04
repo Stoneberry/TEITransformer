@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background-color: #f7f7f7;
+      }
+
+      li {
+        list-style-type: none
+      }
+
+      ul {
+        margin-left: 0;
+        padding-left: 0
+      }
+
+
+      #sidebar, #content {
+        position: absolute;
+      }
+
+      #sidebar {
+        top: 0px;
+        width: 25%;
+        bottom: 0px;
+        background: #ffffff;
+        height: 100%;
+      }
+
+      #content {
+        top: 0px;
+        left: 25%;
+        right: 0;
+        bottom: 0px;
+        background: #f7f7f7;
+        -moz-transition: left 0.5s ease;
+        transition: left 0.5s ease;
+        }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 10% 70%;
+        grid-column-gap: 5%;
+        height: calc(100vh - 90px);;
+      }
+
+      #col-main{
+        box-shadow: -5px 0 15px -5px #dfe3eb, 5px 0 15px -5px #dfe3eb;
+        padding-left: 3em;
+        padding-right: 3em;
+        background-color: #ffffff;
+        position: relative;
+        overflow-y: scroll;
+        height: calc(100vh - 50px);
+        margin: 1em;
+      }
+
+      a {
+        text-decoration: none;
+        color:  #000000;
+      }
+
+      #mySidebar {
+        position: relative;
+        overflow-y: scroll;
+        height: calc(100vh - 50px);
+      }
+
+      #mySidebar a:hover {
+        width: auto;
+        background-color: #394867;
+        color: #ffffff;
+      }
+
+      #mySidebar a {
+        display: block;
+        padding: 6px;
+        padding-left: 3em;
+        font-size: 12pt;
+      }
+
+      .inner_link {
+        border-bottom: 1px dotted #000;
+        text-decoration: none;
+      }
+
+      #toggle-button:hover {
+        background-color: #394867;
+        color: #ffffff;
+      }
+
+      #toggle-button {
+        background-color: #f7f7f7;
+        border: none;
+        color: #394867;
+        padding: 15px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+      }
+
+      .simple-btn {
+        background-color: #f7f7f7;
+        border: none;
+        color: #394867;
+        padding: 15px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      .simple-btn:hover {
+        color: #0a1931;
+      }
+
+      #fileinfo {
+        font-size: 30px;
+      }
+
+      #magnifier {
+      	 font-size: 30px;
+      	 font-weight: bold;
+       }
+
+      #info-icon, #search-icon {
+        color: #394867 !important;
+      }
+        
+      #info-icon:hover, #search-icon:hover {
+        color: #0a1931 !important;
+      }
+
+      .modal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1050;
+        opacity: 0;
+        -webkit-transition: opacity 400ms ease-in;
+        -moz-transition: opacity 400ms ease-in;
+        transition: opacity 400ms ease-in;
+        pointer-events: none;
+      }
+
+      .modal:target {
+        opacity: 1;
+        pointer-events: auto;
+        overflow-y: auto;
+      }
+
+      .modal-dialog {
+        position: relative;
+        width: auto;
+        margin: 10px;
+      }
+
+      @media (min-width: 576px) {
+        .modal-dialog {
+          max-width: 50%;
+          margin: 30px auto;
+        }
+      }
+
+      .modal-content {
+        position: relative;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: .3rem;
+        outline: 0;
+        background-color: #f7f7f7;
+      }
+
+      @media (min-width: 768px) {
+        .modal-content {
+          -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+        }
+      }
+
+      .modal-header {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 15px;
+        border-bottom: 1px solid #eceeef;
+      }
+
+      .modal-title {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 1.5;
+        font-size: 1.25rem;
+        font-weight: 500;
+      }
+
+      .close {
+        float: right;
+        font-family: sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        opacity: .5;
+        text-decoration: none;
+      }
+
+      .close:focus,
+      .close:hover {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: .75;
+      }
+
+      .modal-body {
+        position: relative;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 15px;
+        overflow: auto;
+      }
+
+      .fileinfo-head {
+        color: #394867 !important;
+      }
+
+      .fileinfo-node {
+        color: #394867 !important;
+        font-style: italic;
+      }
+
+      .fileinfo-block div {
+        margin-bottom: 3em; 
+        /*background-color: #ffffff;*/
+      }
+
+      .fileinfo-block h3{
+        padding-left: 1em;
+      }
+
+      .fileinfo-text{
+        margin-left: 2em;
+      }
+
+      #fileinfo-content {
+        /*background-color: #f7f7f7;*/
+      }
+
+      #modal-Search {
+      	background-color: white;
+      }
+
+      form{
+      	text-align: center;
+      }
+
+
+      #search {
+      	margin-top: 1em;
+      }
+
+      #search-header {
+      	display: block;
+      	visibility: hidden;
+      	margin-top: 2em;
+      	margin-bottom: 2em;
+
+      }
+
+      #search-header h3 {
+      	color: #70757a;
+      	font-weight: normal;
+      	display: inline-block;
+      	margin-left: 1em;
+      }
+
+      .search-result {
+        padding: 1em;
+        border-top: 10px solid #f7f7f7;
+        border-bottom: 10px solid #f7f7f7;
+        display: block;
+      }
+
+     select {
+     	/*background-color: #f7f7f7;*/
+       	border: 1px solid #9ba4b4;
+  		padding: 12px 20px;
+  		width: 15%;
+  		/*border: none;*/
+		border-radius: 4px;
+		background-color: #9ba4b4;
+		color: #ffffff;
+      }
+
+     input[type=text] {
+       	border: 2px solid #9ba4b4;
+  		padding: 12px 20px;
+  		width: 50%;
+  		border-radius: 4px;
+      }
+
+     input[type=text]:focus {
+		  background-color: #f7f7f7 !important;
+		}
+
+      .btn-search {
+        background-color: #394867 !important;
+        /*border: none;*/
+        border: 1px solid #394867;
+        color: #ffffff;
+        padding: 12px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        border-radius: 4px;
+      }
+
+	.btn-download {
+      	background-color: inherit;
+      	border-radius: 15px;
+        border: 1px solid #394867;
+        color: #394867;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+      }
+
+      .btn-download:hover {
+		  background-color: #394867;
+		  color: #ffffff;
+		}
+
+      .disabled {
+		  opacity: 0.6;
+		  cursor: not-allowed;
+		}
+
+	.view-more a{
+		color: #70757a;
+		display: block;
+		/*font-weight: bold;*/
+		}
+
+
+    </style>
+  </head>
+
+  <body>
+
+    <main>
+
+      <div id="sidebar" class="sidebar">
+        <div class="sidenav" id="mySidebar">
+          <ul>
+            <li>
+              <a href="#nav-tabContent">&#94; Back to the beginning</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="content" class="main-content">
+        <div class="grid">
+          <div id="col-left" class="column">
+            <button id="toggle-button" class="opened" onclick="toggle()">&#9776;</button>
+            <button id="increasetext" class="simple-btn" onclick="increaseFont()">&#43;</button>
+            <button id="decreasetext" class="simple-btn" onclick="decreaseFont()">&#8722;</button>
+            <button id="fileinfo" class="simple-btn"><a id="info-icon" href="#openModal">&#5029;</a></button>
+            <button id="magnifier" class="simple-btn"><a id="search-icon" href="#openSearch">&#8981;</a></button>
+
+
+            <div id="openModal" class="modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title">File description</h3>
+                    <a href="#close" title="Close" class="close">x</a>
+                  </div>
+                  <div id="fileinfo-content" class="modal-body">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="openSearch" class="modal">
+              <div class="modal-dialog">
+                <div class="modal-content" id="modal-Search">
+                  <div class="modal-header">
+                    <h3 class="modal-title">Search the document</h3>
+                    <a href="#close" title="Close" class="close">x</a>
+                  </div>
+                  <div id="search-modal" class="modal-body">
+                    <div id="search">
+                      <form id="search-form">
+                      	<select id="mySelect" name="type">
+						  <option value="text">text</option>
+						  <option value="tag">tag</option>
+						</select>
+                       <input type="text" id="myInput" name="query" placeholder="..."/>
+                       <button type="submit" class="btn btn-search" id="btn search-btn">Search</button>
+                      </form>
+                    </div>
+                    <div id="search-content">
+                    	<div id="search-header">
+                    		<h3 id="search-title"> </h3>
+                    		<button class="btn btn-download disabled" id="download-txt" type="button" disabled="true">&#8681; Download</button>
+                    	</div>
+                    	<div id="search-results"> </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div id="col-main" class="column">
+            <div class="document" id="nav-tabContent"></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"> </script>
+    <script type="text/javascript">
+
+      const options = {
+        isCaseSensitive: false,
+        includeScore: false,
+        shouldSort: true,
+        includeMatches: true,
+        findAllMatches: false,
+        minMatchCharLength: 1,
+        location: 0,
+        threshold: 0.6,
+        distance: 100,
+        useExtendedSearch: false,
+        ignoreLocation: false,
+        ignoreFieldNorm: false,
+        keys: ['sentences', 'text']
+      };
+
+      const list = document.getElementById("nav-tabContent").getElementsByTagName('p');
+      var search_results = [];
+      Object.values(list).forEach(getContent);
+      const fuse = new Fuse(search_results, options);
+
+
+      function getContent(element, index){
+        var text = element.innerText || element.textContent;
+        var isEmpty = text.trim().length==0;
+        if (isEmpty === false){
+          var result = new Object();
+          result.name = element.tagName;
+          result.sentences = text.match( /[^\.!\?]+[\.!\?]+/g ) || [];
+          result.sentences = result.sentences.map(function (str) { return str.trim(); });
+          result.text = text;
+          result.link = element.id;
+          result.element = element.cloneNode(true);
+          search_results.push(result);
+        };
+      };
+
+      function toggle() {
+
+        var btn = document.getElementById("toggle-button");
+        var content = document.getElementById("content")
+
+        if ("opened" == btn.classList){
+          content.style.left = "0%";
+          btn.classList.remove('opened');
+          btn.classList.add('closed');
+        } else if ("closed" == btn.classList){
+          content.style.left = "25%";
+          btn.classList.remove('closed');
+          btn.classList.add('opened');
+        }
+      };
+
+      function increaseFont() {
+        var elements = document.getElementById('nav-tabContent').querySelectorAll('p,span');
+
+        for (i in elements){
+          var element = elements[i]
+          var isEmpty = element.innerHTML.trim().length==0;
+          if (isEmpty === false){
+            style = window.getComputedStyle(element, null).getPropertyValue('font-size');
+            currentSize = parseFloat(style);
+            element.style.fontSize = (currentSize + 5) + 'px';
+          }
+        }
+      };
+
+      function decreaseFont() {
+        var elements = document.getElementById('nav-tabContent').querySelectorAll('p,span');
+
+        for (i in elements){
+          var element = elements[i]
+          var isEmpty = element.innerHTML.trim().length==0;
+          if (isEmpty === false){
+            style = window.getComputedStyle(element, null).getPropertyValue('font-size');
+            currentSize = parseFloat(style);
+            element.style.fontSize = (currentSize - 5) + 'px';
+          }
+        }
+      };   
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var scrollbar = document.body.clientWidth - window.innerWidth + 'px';
+
+        document.querySelector('[href="#openModal"]').addEventListener('click', function () {
+          document.body.style.overflow = 'hidden';
+          document.querySelector('#openModal').style.marginLeft = scrollbar;
+        });
+
+        document.querySelector('[href="#close"]').addEventListener('click', function () {
+          document.body.style.overflow = 'visible';
+          document.querySelector('#openModal').style.marginLeft = '0px';
+        });
+
+        document.querySelector('form#search-form').addEventListener('submit', function () {
+          event.preventDefault();
+          let formElement = document.getElementById('search-form');
+          let outputDiv = document.getElementById('search-results');
+          let content = document.getElementById('search-header');
+      	  content.style.visibility = "hidden";
+          outputDiv.innerHTML = "";
+
+          var formData = new FormData(formElement);
+          var qType = formData.get('type');
+          var query = formData.get('query').trim();
+          var isEmpty = query.length==0;
+          if (isEmpty === false){
+          	if (qType === "text"){
+          		findTextMatches(query, outputDiv);
+          	} else if (qType === "tag"){
+          		findTagMatches(query, outputDiv);
+          	}}
+       });
+
+        document.querySelector("button#download-txt").addEventListener("click", function () {
+        	event.preventDefault();
+    		var data = document.querySelectorAll("div.search-result p:not(.view-more)");
+			export_table_to_csv(data, "results.text");
+		});
+    });
+
+      function findTagMatches(query, outputDiv){
+      	var results = document.getElementById("nav-tabContent").querySelectorAll(query);
+      	n_results = results.length.toString();
+
+      	createResultStructure(outputDiv, n_results);
+        results.forEach(addTagSearchResult);
+        btn = document.getElementById('download-txt');
+        btn.classList.remove('disabled');
+        btn.disabled = false;
+      };
+
+      function findTextMatches(query, outputDiv) {
+      	var results = fuse.search(query);
+        n_results = results.length.toString();
+
+        createResultStructure(outputDiv, n_results);
+        results.forEach(addTextSearchResult);
+        btn = document.getElementById('download-txt');
+        btn.classList.remove('disabled');
+        btn.disabled = false;
+      };
+
+      function export_table_to_csv(data, filename) {
+		var txt = [];
+		Object.values(data).forEach(function(item) {txt.push(item.textContent)});
+		download_txt(txt.join("\n=======================\n"), filename);
+		};
+
+
+		function download_txt(txt, filename) {
+		    var txtFile;
+		    var downloadLink;
+		    txtFile = new Blob([txt], {type: "text"});
+		    downloadLink = document.createElement("a");
+		    downloadLink.download = filename;
+		    downloadLink.href = window.URL.createObjectURL(txtFile);
+		    downloadLink.style.display = "none";
+			document.body.appendChild(downloadLink);
+		    downloadLink.click();
+		}
+
+      function createResultStructure (outputDiv, n_results) {
+
+      	let content = document.getElementById('search-header');
+      	content.style.visibility = "visible"
+
+      	let header = document.getElementById('search-header');
+      	let h3 = document.getElementById('search-title');
+      	h3.innerHTML = "Found results: <span>" +  n_results + "</span>"
+      	header.append(h3);
+      };
+
+      function addTextSearchResult(result){
+        if (result.item.text.trim().length==0 === false){
+          let outputDiv = document.getElementById('search-results');
+          let div = document.createElement('div');
+          div.innerHTML = '<p class="view-more"><a target="_blank" href="#' + result.item.link + '"></a>read more...</p>'
+          div.className = "search-result";
+          div.append(result.item.element);
+          outputDiv.append(div);
+        }};
+
+         function addTagSearchResult(result){
+        if (result.textContent.trim().length==0 === false){
+          let outputDiv = document.getElementById('search-results');
+          let div = document.createElement('div');
+          div.innerHTML = '<p class="view-more"><a target="_blank" href="#' + result.id + '"></a>read more...</p>'
+          div.className = "search-result";
+          result = result.cloneNode(true)
+          div.append(result);
+          outputDiv.append(div);
+        }};
+
+
+    </script>
+
+  </body>
+</html>

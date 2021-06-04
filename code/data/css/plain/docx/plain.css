@@ -1,0 +1,30 @@
+
+/* ---------------- Main -------------------- */ 
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 15% 65% 15%;
+}
+
+li {
+ list-style-type: none;
+}
+   
+ul {
+ margin-left: 0;
+ padding-left: 0;
+}
+
+
+main {
+font-size: 11pt; 
+}
+
+
+/* ---------------- Headers -------------------- */ 
+
+
+.head {
+font-size: 12pt; 
+font-weight: bold;
+}

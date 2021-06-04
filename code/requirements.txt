@@ -1,0 +1,16 @@
+beautifulsoup4==4.9.3
+certifi==2020.12.5
+chardet==4.0.0
+cssutils==2.3.0
+idna==2.10
+importlib-metadata==4.0.1
+lxml==4.6.3
+mypy-extensions==0.4.3
+python-docx==0.8.11
+PyYAML==5.4.1
+qwikidata==0.4.0
+requests==2.25.1
+soupsieve==2.2.1
+typing-extensions==3.10.0.0
+urllib3==1.26.4
+zipp==3.4.1

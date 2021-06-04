@@ -1,0 +1,222 @@
+
+/* ---------------- Main -------------------- */ 
+
+li {
+ list-style-type: none;
+}
+   
+ul {
+ margin-left: 0;
+ padding-left: 0;
+}
+
+main {
+font-size: 10pt; 
+}
+
+
+/* ---------------- Blocks -------------------- */ 
+
+
+.titleStmt {
+ margin-bottom: 5em;
+ text-align : center;
+}
+
+.body {
+ margin-top: 5em;
+}
+
+.scene {
+ margin-bottom: 3em;
+}
+
+.TEI {
+ margin-top: 5em;
+}
+
+/* ---------------- Text Titles -------------------- */ 
+
+.author {
+	font-weight: normal;
+	font-size: 12pt; 
+	text-align : center;
+}
+
+.doc-title {
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 13pt; 
+	text-align : center;
+}
+
+/* ---------------- Text Titles -------------------- */ 
+
+.act-title {
+text-transform: uppercase;
+font-weight: normal;
+font-size: 12pt; 
+text-align : center;
+}
+
+.scene-title {
+text-transform: uppercase;
+font-weight: normal;
+font-size: 11pt; 
+text-align : center;
+}
+
+.prologue-title {
+text-transform: uppercase;
+font-weight: normal;
+font-size: 12pt; 
+text-align : center;
+}
+
+.epilogue-title {
+text-transform: uppercase;
+font-weight: normal;
+font-size: 12pt; 
+text-align : center;
+}
+
+/* ---------------- Remarks -------------------- */ 
+
+.speaker-remark {
+font-size: 10pt; 
+font-style: italic;
+}
+
+.author-remark {
+font-size: 9pt; 
+text-align : center;
+padding-right: 3em;
+padding-left: 3em;
+margin-top: 2em;
+margin-bottom: 2em;
+}
+
+.author-remark-block {
+display: block;
+margin-top:1em;
+margin-bottom:1em;
+padding-right:3em;
+padding-left:3em;
+font-size: 9pt; 
+text-align : center;
+}
+
+
+.performance {
+font-size: 9pt; 
+text-align : center;
+padding-right: 3em;
+padding-left: 3em;
+margin-top: 2em;
+margin-bottom: 2em;
+}
+
+
+/* ---------------- Text -------------------- */ 
+
+.role {
+letter-spacing: 5px;
+font-size: 10pt; 
+}
+
+.roleDesc {
+font-size: 10pt;
+}
+
+.castItem {
+font-size: 10pt;
+}
+
+
+.speaker {
+font-size: 10pt; 
+font-weight: bold;
+}
+
+.p-text {
+text-indent: 20px; 
+font-size: 10pt; 
+}
+
+.sp {
+text-indent: 1.25cm; 
+font-size: 10pt; 
+}
+
+.castItem {
+text-align : center;
+}
+
+.castGroup {
+text-align : center;
+}
+
+/* ---------------- Text -------------------- */ 
+
+.castGroup-head {
+letter-spacing: 5px;
+font-size: 10pt; 
+text-align : center;
+}
+
+
+.castList-head {
+text-transform: uppercase;
+font-weight: normal;
+font-size: 12pt; 
+text-align : center;
+}
+
+.lg {
+margin-bottom: 2em;
+}
+
+.l {
+font-size: 9pt; 
+text-indent: 60pt; 
+line-height: 3pt;
+}
+
+
+.actor {
+font-style: italic;
+}
+
+.camera {
+font-style: italic;
+font-size: 10pt; 
+}
+
+.sound {
+font-style: italic;
+font-size: 10pt; 
+}
+
+.caption {
+font-size: 10pt; 
+margin-top: 6pt;
+margin-bottom: 12pt;
+display: block;
+font-style: italic;
+}
+
+.tech {
+font-size: 10pt; 
+font-style: italic;
+}
+
+.view {
+font-size: 10pt; 
+font-style: italic;
+}
+
+.head {
+margin-top: 50pt;
+}
+
+

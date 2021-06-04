@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+
+      /*.sidenav {
+        width: 130px;
+        position: fixed;
+        z-index: 1;
+        top: 20px;
+        left: 10px;
+        background: #eee;
+        overflow-x: hidden;
+        padding: 8px 0;
+      }
+
+      .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #2196F3;
+        display: block;
+      }
+
+      .sidenav a:hover {
+        color: #064579;
+      }
+
+      .main {
+        margin-left: 140px;  Same width as the sidebar + left position in px 
+        font-size: 28px;  Increased text to enable scrolling 
+        padding: 0px 10px;
+      }
+
+     @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+      }*/
+
+      .grid {
+        display: grid;
+        grid-template-columns: 25% 65%;
+        grid-column-gap: 10px;
+      }
+
+      .sidenav {
+        /*border: 3px solid black;*/
+        padding: 15px;
+        /*background-color: #fff;*/
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        height: 25vh;
+      }
+
+      .sidenav a:hover {
+        background: #f1f6f9;
+        border-radius: 1000px;
+      }
+
+      .sidenav a {
+        display: block;
+        padding: 6px;
+      }
+
+      a {
+        text-decoration: none;
+        color:  #000000 !important;
+      }
+
+      #col-main{
+        padding: 2em;
+        border: 1px solid #aaaaaa; 
+        overflow-y: scroll; 
+        height: calc(100vh - 90px);
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div class="grid">
+
+        <div id="col-left" class="column">
+          <div class="sidenav" id="content">
+            <ul>
+              <li><a href="#nav-tabContent"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-up" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"/>
+            </svg> Back to the beginning</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="col-main" class="column">
+          <div class="main" id="nav-tabContent"></div>
+        </div>
+
+      </div>  
+    </main>
+  </body>
+</html> 

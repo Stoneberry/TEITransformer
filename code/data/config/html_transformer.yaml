@@ -1,0 +1,52 @@
+
+PATHS:
+  doc_temp: "data/templates/document7.html"
+  file_desc: "data/xsl/fileDesc_all.xsl"
+  xsl_dir: "data/xsl"
+
+META:
+  ftypes: {True: "all", False: "chosen"}
+
+METAINFO_TAGS:
+  - ['fileDesc', 'titleStmt', 'title', False]
+  - ['fileDesc', 'publicationStmt', 'date', False]
+  - ['fileDesc', 'titleStmt', 'author', True]
+  - ['profileDesc', 'langUsage', True]
+  - ['profileDesc', 'creation', 'date', False]
+
+XPATH:
+  text_content: "//p[contains(@class, 'head')]"
+  div_content: "//div[contains(@id, 'nav-tabContent')]"
+  tei_document: "//div[contains(@class, 'tei-document')]/div[@id='col2']"
+  ul_content: "//div[contains(@id, 'mySidebar')]/ul"
+  wikidata_id_key: "//*[contains(@key, 'wikidata')]"
+  wikidata_id_type: "//*[contains(@type, 'wikidata')]"
+  ref_reference: "//p[@ref]"
+  type_reference: "//p[contains(@type, 'URL') or contains(@type, 'URI')]"
+  xml_file_desc: "//*[name() = 'fileDesc']"
+  html_file_desc: "//div[contains(@class, 'file-desc')]"
+  fileinfo-content: "//div[contains(@id, 'fileinfo-content')]"
+  header: "//p[text()='{}' and contains(@class, '{}')]"
+
+PATTERNS:
+  ref: '<a href="{}" class="inner_link">{}</a>'
+  content: '<li><a href="#{}">{}</a></li>'
+  file_desc_dummy: '<p>There is no description yet.</p>'
+#  xsl_filename: "{}_{}.xsl"
+  xsl_filename: "{}.xsl"
+
+INCLUDE:
+  True:
+    drama: 'drama/drama_all.xsl'
+    verse: 'verse/verse_all.xsl'
+    book: 'book/book_all.xsl'
+  False:
+    drama: 'drama/drama_chosen.xsl'
+    verse: 'verse/verse_chosen.xsl'
+    book: 'book/book_chosen.xsl'
+
+MODULES:
+  drama: ['drama', 'verse', 'book']
+  corpus: []
+  speech: []
+  plain: []

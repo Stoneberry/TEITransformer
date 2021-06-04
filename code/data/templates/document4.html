@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		How to make a Pagination
+		using HTML and CSS ?
+	</title>
+	
+	<style>
+	
+		/* header styling */
+		h1 {
+			color: green;
+		}
+		/* pagination position styling */
+		
+		.pagination_section {
+			position: absolute;
+			top: 500px;
+			right: 230px;
+		}
+		/* pagination styling */
+		
+		.pagination_section a {
+			color: black;
+			padding: 10px 18px;
+			text-decoration: none;
+		}
+		/* pagination hover effect on non-active */
+		
+		.pagination_section a:hover:not(.active) {
+			background-color: #031F3B;
+			color: white;
+		}
+		/* pagination hover effect on active*/
+		
+		a:nth-child(5) {
+			background-color: green;
+			color: white;
+		}
+		
+		a:nth-child(1) {
+			font-weight: bold;
+		}
+		
+		a:nth-child(7) {
+			font-weight: bold;
+		}
+		
+		.content {
+			margin: 50px;
+			padding: 15px;
+			width: 700px;
+			height: 200px;
+			border: 2px solid black;
+		}
+	</style>
+</head>
+
+<body>
+	<center>
+
+		<!-- Header and Slogan -->
+		<h1>GeeksforGeeks</h1>
+		<p>A Computer Science Portal for Geeks</p>
+	</center>
+
+	<!-- contern in this Section -->
+	<div class="content">
+		<h3>Interview Experiences:</h3>
+
+		<article>
+			Share Your Questions/Experience or share
+			your "Interview Experience", please mail
+			your interview experience to
+			contribute@geeksforgeeks.org. Also, to
+			share interview questions, please add
+			questions at Contribute a Question! You
+			can also find company specific Interview
+			Questions at our PRACTICE portal !
+		</article>
+
+
+		<article id="#1">
+			Share Your Questions/Experience or share
+			your "Interview Experience", please mail
+			your interview experience to
+			contribute@geeksforgeeks.org. Also, to
+			share interview questions, please add
+			questions at Contribute a Question! You
+			can also find company specific Interview
+			Questions at our PRACTICE portal !
+		</article>
+
+		<article id="#2">
+			Share Your Questions/Experience or share
+			your "Interview Experience", please mail
+			your interview experience to
+			contribute@geeksforgeeks.org. Also, to
+			share interview questions, please add
+			questions at Contribute a Question! You
+			can also find company specific Interview
+			Questions at our PRACTICE portal !
+		</article>
+	</div>
+	
+	<!-- pagination elements -->
+	<div class="pagination_section">
+		<a href="#1"><< Previous</a>
+		<a href="#2" title="Algorithm">1</a>
+		<a href="#3" title="DataStructure">2</a>
+		<a href="#" title="Languages">3</a>
+		<a href="#" title="Interview" class="active">4</a>
+		<a href="#" title="practice">5</a>
+		<a href="#">Next >></a>
+	</div>
+</body>
+
+</html>

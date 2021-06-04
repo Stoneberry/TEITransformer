@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background-color: #f7f7f7;
+        }
+
+        #sidebar, #content {
+            position: absolute;
+        }
+
+        .sidebar {
+            top: 0px;
+            width: 25%;
+            bottom: 0px;
+            background: #ffffff;
+        }
+
+        .content {
+            top: 0px;
+            left: 25%;
+            right: 0;
+            bottom: 0px;
+            background: #ffffff;
+            -moz-transition: left 0.5s ease;
+            transition: left 0.5s ease;
+        }
+
+        #col-main {
+            position: relative;
+            overflow-y: scroll;
+            height: calc(100vh - 70px);
+        }
+
+        a {
+            text-decoration: none;
+            color:  #000000 !important;
+          }
+
+          #mySidebar a:hover {
+            background: #dfe3eb;
+            width: auto;
+          }
+
+          #mySidebar a {
+            display: block;
+            padding: 6px;
+            padding-left: 3em;
+            font-size: 12pt;
+          }
+
+          .inner_link {
+            border-bottom: 1px dotted #000;
+            text-decoration: none;
+          }
+
+
+    </style>
+  </head>
+
+  <body>
+
+    <main>
+
+        <div class="main-grid">
+
+            <div id="sidebar" class="sidebar">
+                <div class="sidenav" id="mySidebar">
+                  <ul>
+                    <li>
+                      <a href="#nav-tabContent">
+                        &#94; Back to the beginning
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+
+            <div id="content" class="main-content">
+                <button id="toddle-button" class="opened" onclick="toggle()">&#9776;</button>
+
+                <div class="grid">
+                    <div id="col-main" class="column">
+                        <div class="container">
+                            <div class="main" id="nav-tabContent">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+  
+    <script type="text/javascript">
+
+        <script type="text/javascript">
+
+      function toggle() {
+
+        var btn = document.getElementById("toggle-button");
+        var content = document.getElementById("B")
+
+        if ("opened" == btn.classList){
+          content.style.left = "0%";
+          btn.classList.remove('opened');
+          btn.classList.add('closed');
+        } else if ("closed" == btn.classList){
+          content.style.left = "25%";
+          btn.classList.remove('closed');
+          btn.classList.add('opened');
+        }
+      }
+    
+
+    </script>
+
+    </script>
+
+  </body>
+</html>
