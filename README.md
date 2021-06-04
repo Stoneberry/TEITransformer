@@ -1,6 +1,6 @@
 # TEITransformer
 
-The main goal of this package is to develop an algorithm of conversion TEI XML into Edition Formats (HTML, DOCX, JSON). The algorithm consists of two main parts: an algorithm for converting TEI XML to a format (TEITransformer) and a front and back application architecture for creating a digital publication and integrating it into an application or website (TEITransformer: https://github.com/Stoneberry/tei_platform.git). 
+The main goal of this package is to develop an algorithm of conversion TEI XML into Edition Formats (HTML, DOCX, JSON). The algorithm consists of two main parts: an algorithm for converting TEI XML to a format (TEITransformer) and a front and back application architecture for creating a digital publication and integrating it into an application or website (https://github.com/Stoneberry/tei_platform.git). 
 
 The client interface is implemented by the TEITransformer class. The user interacts with the algorithm only using this module. When initializing the object, the user must specify the scenario according to which the transformation will take place. The plain format is selected as a default value. 
 
@@ -24,6 +24,9 @@ Another parameter is the completeness of the tags considered. There are two opti
 ## Quickstart
 
 ```
+from tei_transformer import TEITransformer
+
+
 tei_path = "filename.xml"
 schema_path = "schema.rng"
 
