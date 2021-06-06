@@ -1,0 +1,20 @@
+
+MEASURES:
+  pt: "Pt"
+  cm: "Cm"
+  int: "Inches"
+
+FONT_VALUES:
+  weight:
+    bold: ["bold", True]
+    normal: ["bold", False]
+  style:
+    italic: ["italic", True]
+    normal: ["italic", False]
+  transform:
+    uppercase: ["all_caps", True]
+    lowercase: ["all_caps", False]
+  decoration:
+    underline: ["underline", True]
+    normal: ["underline", False]
+

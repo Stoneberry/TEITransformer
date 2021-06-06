@@ -2,9 +2,9 @@
 <xsl:stylesheet version = "1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         xmlns:tei_ns="http://www.tei-c.org/ns/1.0">
 
-  <xsl:include href="drama/drama_all.xsl"/>
-  <xsl:include href="verse/verse_all.xsl"/>
-  <xsl:include href="book/book_all.xsl"/>
+<!--  <xsl:include href="drama/drama_all.xsl"/>-->
+<!--  <xsl:include href="verse/verse_all.xsl"/>-->
+<!--  <xsl:include href="book/book_all.xsl"/>-->
         
   <xsl:template match = "/"> 
         <html> 

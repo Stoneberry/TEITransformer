@@ -2,25 +2,25 @@
 <xsl:stylesheet version = "1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  				xmlns:tei_ns="http://www.tei-c.org/ns/1.0">
  				
- 	<xsl:template match = "/"> 
-      	<html> 
-         	<head> 
-         		<meta charset="utf-8"/>
-         		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-            <link rel="stylesheet" type="text/css" href="drama.css" />
-    			<title></title>
-  			</head>
-  			<body> 
-  				<main>
-  					<div class="wrapper">
-  		 				<div id="col1"></div>
-  		 				<div id="col2"><xsl:apply-templates/></div>
-  		 				<div id="col3"></div>
-  		 			</div>
-    			</main>
-  		</body>
-    </html> 
-  </xsl:template> 
+<!-- 	<xsl:template match = "/"> -->
+<!--      	<html> -->
+<!--         	<head> -->
+<!--         		<meta charset="utf-8"/>-->
+<!--         		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>-->
+<!--            <link rel="stylesheet" type="text/css" href="drama.css" />-->
+<!--    			<title></title>-->
+<!--  			</head>-->
+<!--  			<body> -->
+<!--  				<main>-->
+<!--  					<div class="wrapper">-->
+<!--  		 				<div id="col1"></div>-->
+<!--  		 				<div id="col2"><xsl:apply-templates/></div>-->
+<!--  		 				<div id="col3"></div>-->
+<!--  		 			</div>-->
+<!--    			</main>-->
+<!--  		</body>-->
+<!--    </html> -->
+<!--  </xsl:template> -->
 
 
     <!-- Basic behavior -->

@@ -13,8 +13,8 @@ FORMATS:
   odd: ['.odd', '.xml']
   default_schema: "rng"
   output: ['docx', 'html', 'json']
-  css: ['css']
-  html_output: ['html']
+  css: ['.css']
+  html_output: ['.html']
 
 SCHEMA:
   loc_pattern: "//*/@{}:schemaLocation"
