@@ -1,0 +1,20 @@
+.publisher {
+	color: green;
+	font-size: 250%;
+}
+    
+.sp {
+font-size: 15pt; 
+}
+
+.castGroup-head {
+letter-spacing: 0px;
+font-size: 10pt; 
+text-align: center;
+color: rgb(192,192,192);
+}
+
+.speaker {
+font-weight: bold;
+font-style: italic;
+}

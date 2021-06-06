@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<note xmlns="http://msiter.ru"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="test_schema test_schema.xsd">
+   <to>Tove</to>
+   <from>Jani</from>
+   <heading>Напоминание</heading>
+   <body>Не забудь обо мне в эти выходные!</body>
+</note>
