@@ -22,6 +22,7 @@ There are only two methods available in the class:
 
 First, you need to load the data using the ```load_tei``` method. The function receives the path to the TEI XML file and the path to the schema as input. 
 
+### HTML
 
 ```
 from tei_transformer import TEITransformer
@@ -39,6 +40,47 @@ TT.transform(
   enable_valid=False
 )
 ```
+
+
+### DOCX
+
+```
+from tei_transformer import TEITransformer
+
+
+tei_path = "filename.xml"
+schema_path = "schema.rng"
+
+TT = TEITransformer(scenario='drama')
+TT.load_tei(tei_path, schema_path=schema_path)
+TT.transform(
+  output_format='docx',
+  modules=[],
+  keep_all=False,
+  enable_valid=False,
+  output_filename='output',
+  odd_path=None,
+  custom_css_path=None)
+```
+
+### JSON
+
+```
+from tei_transformer import TEITransformer
+
+
+tei_path = "filename.xml"
+schema_path = "schema.rng"
+
+TT = TEITransformer(scenario='drama')
+TT.load_tei(tei_path, schema_path=schema_path)
+TT.transform(
+  output_format='json',
+  enable_valid=False,
+  output_filename="output",
+)
+```
+
 
 ## Scenario
 
