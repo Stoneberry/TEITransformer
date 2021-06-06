@@ -33,8 +33,15 @@ Before proceeding to the description of the templates, it is important to define
 
 A similar system was created for the current algorithm. For each of the selected scenarios, lists of core elements were compiled based on the TEI Guidelines and organized into separate files by modules. Then, a document for connecting these modules was created. The user can independently determine which modules to use. By default, the modules that are specific to the scenario are connected. The overall system goes as follows:
 
+![modular_system](https://github.com/Stoneberry/TEITransformer/blob/main/static/modular.png)
 
 
+Elements considered in modules:
+
+module | elements
+--- | ---
+drama elements | titleStmt, author, castItem, castItem, castGroup, roleDesc, role, actor, camera, sound, caption, tech, view, set, set, set, pb, sp, speaker, sp, div[@type='act'], div[@type='scene'], castGroup, castList, head, div[@type='scene'], sp, sp, sp, sp, stage, titleStmt
+verse elements | l, lg
 
 ## Quickstart
 
