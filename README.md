@@ -15,6 +15,12 @@ The algorithm for enabling visualization uses a set of XSLT stylesheets.
 
 ## Quickstart
 
+You can install package from PyPi website:
+
+```
+pip install TEItransformer
+````
+
 There are only two methods available in the class: 
 
 * load_tei()
