@@ -27,6 +27,31 @@ At the moment, the algorithm has two scenarios:
 <i>Plain</i> is a simple format that has no predefined structure. It was created specifically so that the users could determine their own settings of the output.
 The <i>plain</i> format is selected as a default value. 
 
+## Complete vs Selective template
+
+The templates are further divided into two subcategories: 
+
+* complete 
+* selective 
+
+Complete template allows users to convert XML file to HTML while preserving the entire structure of the document. The only changes are that:
+
+* all internal nodes are saved in the <div> tag;
+* all leaf nodes with text are saved in the <p> tag;
+* the node name becomes a class name. 
+
+TEI:
+  
+![tei](https://github.com/Stoneberry/TEITransformer/blob/main/static/tei_structure.png)
+  
+HTML:
+ 
+![html](https://github.com/Stoneberry/TEITransformer/blob/main/static/html_structure.png)
+  
+A selective template also preserves the overall structure of the document. However, the text is saved for pre-selected items only. The main idea is to create a standardized representation without unnecessary elements. 
+
+![html](https://github.com/Stoneberry/TEITransformer/blob/main/static/selective.png)
+
 ## Modules
 
 Before proceeding to the description of the templates, it is important to define the TEI infrastructure. The organization of the elements is based on a modular system. Elements that occur under the same conditions are combined into a single module. For example, the drama module describes elements for dramatic text encoding. It is convenient when forming your own TEI vocabulary. You can easily select the necessary elements depending on the specifics and subject matter of your documents.
