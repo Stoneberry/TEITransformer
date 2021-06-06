@@ -10,10 +10,13 @@ class TEITransformer:
 
     """
     Client interface of the algorithm.
+    Takes data from the user.
+    Transforms according to the input parameters.
     """
 
     def __init__(self, scenario='plain'):
         """
+
         :param scenario: str
         """
         self.scenario = check_scenario(scenario)
@@ -54,9 +57,11 @@ class TEITransformer:
         else:
             check_str(output_filename, 'output_filename')
         if self.valid or enable_valid is False:
-            construction_method = self.director.select_construction_method(output_format)
+            construction_method = self.director.select_construction_method(
+                output_format
+            )
             getattr(self.director, construction_method)(
                 self.tei, output_filename=output_filename, **kwargs)
-            logging.warning("The file was successfully transformed")
+            logging.warning("The file was successfully transformed.")
             return None
         raise ValueError("Unable to perform conversion for invalid file.")

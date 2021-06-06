@@ -2,14 +2,15 @@ from docx_builder import DOCXBuilder
 from html_builder import HTMLBuilder
 from json_builder import JSONBuilder
 from bs4 import BeautifulSoup
-from setup import TT_CFG, SCENARIOS
+from setup import TT_CFG
 
 
 class Director:
 
     """
     The class that controls the transformation process.
-    Appoints workers.
+    Assigns builders.
+    Starts the transformation process.
     """
 
     def __init__(self, scenario='drama'):
@@ -30,7 +31,7 @@ class Director:
         :return: None
         """
         output_filename = "{}.html".format(output_filename)
-        self.HBuilder = HTMLBuilder(scenario=self.scenario, format="html")
+        self.HBuilder = HTMLBuilder(scenario=self.scenario, output_format="html")
         self.HBuilder.transform(tei, output_filename=output_filename, **kwargs)
 
     def transform_docx(self, tei, output_filename="output", **kwargs):
@@ -44,7 +45,7 @@ class Director:
         :return: None
         """
         output_filename = "{}.docx".format(output_filename)
-        self.HBuilder = HTMLBuilder(scenario=self.scenario, format="docx")
+        self.HBuilder = HTMLBuilder(scenario=self.scenario, output_format="docx")
         html_tree = self.HBuilder.transform(tei, **kwargs)
         soup = BeautifulSoup(str(html_tree), 'html.parser')
         self.DBuilder = DOCXBuilder(css=self.HBuilder.css)
@@ -53,7 +54,7 @@ class Director:
     def transform_json(self, tei, output_filename="output"):
         """
         JSON transformation pipeline.
-        Calls the JSONBuilder transformation metod and converts TEI to JSON.
+        Calls the JSONBuilder transformation method and converts TEI to JSON.
         :param tei: TEIXML object
         :param output_filename: str
         :return: None
