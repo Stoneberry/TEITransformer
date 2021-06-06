@@ -36,8 +36,8 @@ The templates are further divided into two subcategories:
 
 Complete template allows users to convert XML file to HTML while preserving the entire structure of the document. The only changes are that:
 
-* all internal nodes are saved in the <div> tag;
-* all leaf nodes with text are saved in the <p> tag;
+* all internal nodes are saved in the <b>div</b> tag;
+* all leaf nodes with text are saved in the <b>p</b> tag;
 * the node name becomes a class name. 
 
 TEI:
@@ -67,6 +67,70 @@ module | elements
 --- | ---
 drama elements | titleStmt, author, castItem, castItem, castGroup, roleDesc, role, actor, camera, sound, caption, tech, view, set, set, set, pb, sp, speaker, sp, div[@type='act'], div[@type='scene'], castGroup, castList, head, div[@type='scene'], sp, sp, sp, sp, stage, titleStmt
 verse elements | l, lg
+
+
+## Output 
+
+## HTML output 
+
+The user can also select one of the following output formats:
+a simple text representation which includes the text of the document stylized in accordance with predefined styles (whether by the user or default settings);
+a standalone responsive text viewer interface.
+
+The standalone interface includes features such as:
+
+* increasing/decreasing the text size
+* file description
+* automatically generated document content 
+* search engine. 
+
+The document also consists of an HTML structure and CSS code for stylization. However, it also requires JavaScript (JS) code for interactive work with the page. The autonomy of the file is provided by the fact that all the additional code is included in the document. Since it is just one file, it can easily be used not only for personal browsing but also to be shared with others or embedded in any resource.
+
+
+![full_page](https://github.com/Stoneberry/TEITransformer/blob/main/static/full_page.png)
+
+* 1 — collapsible sidebar with the content of the document; 
+* 2 — text size increasing/decreasing buttons; 
+* 3 — pop-up file description window; 
+* 4 — pop-up search engine window; 
+* 5 — link to the author's wikipedia page. 
+
+
+## File description
+
+The formation of the description and content of the document requires an analysis of its structure. According to the guidelines of the default text structure any bibliographical description about the file should be stored inside the <b>fileDesc</b> tag (TEI Consortium. n.d., f). Thus, the program extracts all the data from the tag and presents it in the pop-up file description window (see Figure 7).
+  
+## Document content
+
+As for document content generation, the algorithm searches for the <b>head</b> element. Despite the fact that the <b>head</b> tag most often indicates the beginning of a new section. It can also be part of lower-level elements. Therefore, the user needs to define the behavior of the tag in the ODD file for better document processing. 
+  
+## Search
+
+There are two types of search in:
+
+* content
+* structure of the document. 
+
+### Content
+
+The program extracts all text elements from the document, divides them into sentences, and finds matches with the user's query using a fuzzy string searching algorithm. 
+
+### Structure
+
+The structure is searched using XPATH. The user is prompted to enter a string with XPATH expressions to select nodes. This is possible due to the preservation of the document structure at the stage of transformation of XML to HTML. The only exception is that the tag names are converted to classes. Accordingly, to find all the phrases of a certain character the expressions ```.sp[who=“character_name”]``` should be used instead of ```sp[who=“character_name”]```, where the dot denotes that the pursuing sequence is a class name. It is also possible to save the search results in a txt file.
+
+
+## Links
+
+In addition, the program considers several types of links during the analysis process:
+
+* links defined by the @ref attribute; 
+* links decorated in nodes specified with the attribute @type “URL” or “UTI”; 
+* Wikidata ID decorated in nodes specified with the attribute @type “wikidata”;
+* Wikidata ID references in @key attribute in form of “wikidata:Q729569”
+
+
+
 
 ## Quickstart
 
