@@ -31,13 +31,13 @@ First, you need to load the data using the ```load_tei``` method. The function r
 ### HTML
 
 ```
-from tei_transformer import TEITransformer
+import TEITransformer as TT
 
 
 tei_path = "filename.xml"
 schema_path = "schema.rng"
 
-TT = TEITransformer(scenario='drama')
+TT = TT.TEITransformer(scenario='drama')
 TT.load_tei(tei_path, schema_path=schema_path)
 TT.transform(
   output_format='html',
@@ -51,13 +51,10 @@ TT.transform(
 ### DOCX
 
 ```
-from tei_transformer import TEITransformer
-
-
 tei_path = "filename.xml"
 schema_path = "schema.rng"
 
-TT = TEITransformer(scenario='drama')
+TT = TT.TEITransformer(scenario='drama')
 TT.load_tei(tei_path, schema_path=schema_path)
 TT.transform(
   output_format='docx',
@@ -72,13 +69,11 @@ TT.transform(
 ### JSON
 
 ```
-from tei_transformer import TEITransformer
-
 
 tei_path = "filename.xml"
 schema_path = "schema.rng"
 
-TT = TEITransformer(scenario='drama')
+TT = TT.TEITransformer(scenario='drama')
 TT.load_tei(tei_path, schema_path=schema_path)
 TT.transform(
   output_format='json',
