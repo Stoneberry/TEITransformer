@@ -31,7 +31,7 @@ First, you need to load the data using the ```load_tei``` method. The function r
 ### HTML
 
 ```
-import TEITransformer as TTR
+import TEItransformer as TTR
 
 
 tei_path = "filename.xml"
