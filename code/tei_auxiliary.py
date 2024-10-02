@@ -58,7 +58,7 @@ def write_json(path, data):
     :return: None
     """
     with open(path, "w") as outfile:
-        json.dump(data, outfile)
+        json.dump(data, outfile, ensure_ascii=False)
 
 
 def load_directories(path):

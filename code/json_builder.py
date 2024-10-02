@@ -78,4 +78,4 @@ class JSONBuilder:
         if output_filename:
             write_json(output_filename, output_data)
             return None
-        return json.dumps(output_data)
+        return json.dumps(output_data, ensure_ascii=False)
